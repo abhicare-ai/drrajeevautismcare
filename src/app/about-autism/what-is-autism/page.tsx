@@ -258,6 +258,10 @@ export default function Page() {
           <Image src={hjd} alt="hjd" />
         </div>
       </div>
+
+      <div>
+        <VavBorder />
+      </div>
     </main>
   );
 }
