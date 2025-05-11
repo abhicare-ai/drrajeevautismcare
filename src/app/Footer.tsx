@@ -108,7 +108,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="text-muted-foreground mt-8 border-t pt-4 text-center">
+      <div className="text-card mt-8 border-t pt-4 text-center">
         © {new Date().getFullYear()} DR.Rajeev Autism Care. All rights
         reserved.
       </div>
