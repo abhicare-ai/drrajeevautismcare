@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ausi from "@/assets/signs-slider-placeholder-1.png";
+import ausi from "@/assets/faq.jpg";
 import aska from "@/assets/QA-banner-image.png";
 import VavBorder from "@/components/VavBorder";
 import Sidebar from "../Sidebar";
@@ -85,7 +85,7 @@ export default function Page() {
 
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-3 md:flex-row">
           <div className="space-y-14">
-            <ul className="space-y-5 pl-6">
+            <ul className="space-y-5 ">
               <li className="space-y-3">
                 <p className="font-bold">
                   Q: Are more children being diagnosed with ASD?
