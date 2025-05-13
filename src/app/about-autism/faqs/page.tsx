@@ -39,7 +39,7 @@ export default function Page() {
                 </p>
               </div>
             </div>
-            <Image src={ausi} alt="ausi" />
+            <Image src={ausi} alt="ausi" className="md:w-1/2" />
           </div>
           {/* Wave SVG divider */}
           <div className="w-full overflow-hidden leading-[0]">
@@ -85,7 +85,7 @@ export default function Page() {
 
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-3 md:flex-row">
           <div className="space-y-14">
-            <ul className="space-y-5 ">
+            <ul className="space-y-5">
               <li className="space-y-3">
                 <p className="font-bold">
                   Q: Are more children being diagnosed with ASD?
@@ -298,9 +298,9 @@ export default function Page() {
         </div>
       </div>
 
-       <div>
-              <VavBorder />
-            </div>
+      <div>
+        <VavBorder />
+      </div>
     </main>
   );
 }
