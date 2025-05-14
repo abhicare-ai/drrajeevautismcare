@@ -8,8 +8,8 @@ import { useState } from "react";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
 
-interface PhoneMenuProps{
-    className:string
+interface PhoneMenuProps {
+  className: string;
 }
 
 const sections = [
@@ -36,39 +36,23 @@ const sections = [
     title: "Get Involved",
     links: [
       { href: "/get-involved/sponsor", label: "Sponsor a Child" },
-      { href: "/get-involved/donate", label: "Donate Now" },
-      { href: "/get-involved/volunteer", label: "Volunteer With Us" },
-      { href: "/get-involved/partners", label: "Partner With Us" },
     ],
   },
   {
     title: "Success Stories",
-    links: [
-      { href: "/stories/videos", label: "Video Testimonials" },
-      { href: "/stories/reviews", label: "Written Reviews" },
-      { href: "/stories/ratings", label: "Star Ratings & Filters" },
-    ],
+    links: [{ href: "/stories/videos", label: "Video Testimonials" }],
   },
-  {
-    title: "Resources",
-    links: [
-      { href: "/resources/blog", label: "Awareness Blog" },
-      { href: "/resources/downloads", label: "Downloadable PDFs" },
-      { href: "/resources/videos", label: "Video Library" },
-      { href: "/resources/podcast", label: "Podcast & Interviews" },
-    ],
-  },
+
   {
     title: "About Us",
     links: [
-      { href: "/about/team", label: "Meet Our Team" },
       { href: "/about/mission", label: "Our Mission" },
       { href: "/contact", label: "Contact Us" },
     ],
   },
 ];
 
-export default function PhoneMenu({className}:PhoneMenuProps) {
+export default function PhoneMenu({ className }: PhoneMenuProps) {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
@@ -77,19 +61,22 @@ export default function PhoneMenu({className}:PhoneMenuProps) {
   };
 
   return (
-    <Sheet open={open} onOpenChange={setOpen} >
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         asChild
-        className={cn(`w-full bg-secondary rounded-none flex justify-start px-3 `,className)}
+        className={cn(
+          `bg-secondary flex w-full justify-start rounded-none px-3`,
+          className,
+        )}
       >
         <Button variant="ghost" size="icon">
           <AlignRight className="size-5" />
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="left" className="w-[300px] ">
-         <DialogTitle className="sr-only">Mobile Navigation Menu</DialogTitle>
-        <div className="flex flex-col  mt-10">
+      <SheetContent side="left" className="w-[300px]">
+        <DialogTitle className="sr-only">Mobile Navigation Menu</DialogTitle>
+        <div className="mt-10 flex flex-col">
           {/* Home */}
           <Link href="/" onClick={() => setOpen(false)}>
             <Button
@@ -102,7 +89,7 @@ export default function PhoneMenu({className}:PhoneMenuProps) {
 
           {/* Other Sections */}
           {sections.map((section) => (
-            <div key={section.title} className="flex flex-col ">
+            <div key={section.title} className="flex flex-col">
               <Button
                 onClick={() => toggleSection(section.title)}
                 variant="outline"
@@ -118,7 +105,7 @@ export default function PhoneMenu({className}:PhoneMenuProps) {
               </Button>
 
               {activeSection === section.title && (
-                <div className="  flex flex-col gap-1 ">
+                <div className="flex flex-col gap-1">
                   {section.links.map((link) => (
                     <Link
                       key={link.href}
@@ -127,7 +114,7 @@ export default function PhoneMenu({className}:PhoneMenuProps) {
                     >
                       <Button
                         variant="default"
-                        className="w-full justify-start text-sm rounded-none"
+                        className="w-full justify-start rounded-none text-sm"
                       >
                         {link.label}
                       </Button>

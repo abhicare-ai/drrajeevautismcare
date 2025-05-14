@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import drrajeevkumar from "@/assets/rajevdocor.jpg";
-import childSponser from "@/assets/childsponser.jpg";
+
 import partenrship from "@/assets/partnership.jpg";
 import factoautism from "@/assets/autism-factor.png";
 import getConnectimg from "@/assets/getconnect.png";
@@ -32,6 +32,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -336,25 +337,7 @@ export default function Page() {
                       <p>Become a Partner&lsquo;s</p>
                     </div>
                     <div className="p-3">
-                      <Button className="w-full">Sponsor</Button>
-                    </div>
-                  </div>
-                  <div className="h-fit space-y-3 overflow-hidden rounded-md border">
-                    <div className="p-3">
-                      <p className="text-center text-2xl font-bold">
-                        Ongoing Compa<span className="text-primary">ig</span>ns
-                      </p>
-                    </div>
-                    <Image
-                      src={childSponser}
-                      alt="childSponser"
-                      className="object-cover duration-300 hover:scale-105"
-                    />
-                    <div className="p-3">
-                      <p>Helpenrty a childs life</p>
-                    </div>
-                    <div className="p-3">
-                      <Button className="w-full">Donate</Button>
+                      <Button className="w-full">  <Link href="/get-involved/sponsor">Sponsor a Child</Link></Button>
                     </div>
                   </div>
                 </div>

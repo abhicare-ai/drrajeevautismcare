@@ -59,7 +59,7 @@ export default function Page() {
       <div>
         <VavBorder />
         <div className="mx-auto max-w-7xl space-y-5 px-3">
-          <p className=" text-2xl font-bold">
+          <p className="text-2xl font-bold">
             Autism Treatment Approach –{" "}
             <span className="text-primary">Abhi Home Hall</span>
           </p>
@@ -69,7 +69,7 @@ export default function Page() {
             experience, we know what works for people with complex, serious
             mental illness. We’ll help you every step of the way, too.
           </p>
-          <p className=" text-2xl font-bold">
+          <p className="text-2xl font-bold">
             <span className="text-primary">Inpatient Treatment</span>
           </p>
           <p>
@@ -88,7 +88,7 @@ export default function Page() {
             support, our patients develop valuable social and communication
             skills that contribute to their well-being.
           </p>
-          <p className=" text-2xl font-bold">
+          <p className="text-2xl font-bold">
             <span className="text-primary">Outpatient Treatment</span>
           </p>
 
@@ -106,7 +106,7 @@ export default function Page() {
             on enhancing daily living skills, helping individuals integrate
             better into home, school, and community settings.
           </p>
-          <p className=" text-2xl font-bold">
+          <p className="text-2xl font-bold">
             <span className="text-primary">Treatment Philosophy</span>
           </p>
 
@@ -118,7 +118,7 @@ export default function Page() {
             optimal independence and can thrive within their community.
           </p>
 
-          <p className=" text-2xl font-bold">
+          <p className="text-2xl font-bold">
             <span className="text-primary">Get in Touch</span>
           </p>
           <p>
@@ -130,7 +130,7 @@ export default function Page() {
       </div>
 
       <div>
-            <VavBorder />
+        <VavBorder />
       </div>
     </main>
   );

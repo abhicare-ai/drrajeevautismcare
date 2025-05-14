@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "uploadthing/tw/v4";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -42,7 +43,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-
+@source "../node_modules/@uploadthing/dist"; /** <-- depends on your project structure */
 :root {
   --radius: 1rem;
   --background: oklch(1 0 0);

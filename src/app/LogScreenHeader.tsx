@@ -18,7 +18,7 @@ export default function LogScreenHeader({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        "max-w-7xl mx-auto flex justify-center  items-center relative",
+        "relative mx-auto flex max-w-7xl items-center justify-center",
         className,
       )}
     >
@@ -34,7 +34,7 @@ export default function LogScreenHeader({ className }: HeaderProps) {
           {/* About Autism */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>About Autism</NavigationMenuTrigger>
-            <NavigationMenuContent className="lg:w-[920px] flex flex-col p-4 gap-2">
+            <NavigationMenuContent className="flex flex-col gap-2 p-4 lg:w-[920px]">
               <NavigationMenuLink asChild>
                 <Link href="/about-autism/what-is-autism">What is Autism?</Link>
               </NavigationMenuLink>
@@ -53,7 +53,7 @@ export default function LogScreenHeader({ className }: HeaderProps) {
           {/* Treatment & Support */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>Treatment & Support</NavigationMenuTrigger>
-            <NavigationMenuContent className="lg:w-[920px] flex flex-col p-4 gap-2">
+            <NavigationMenuContent className="flex flex-col gap-2 p-4 lg:w-[920px]">
               <NavigationMenuLink asChild>
                 <Link href="/treatment/approach">Our Treatment Approach</Link>
               </NavigationMenuLink>
@@ -75,18 +75,9 @@ export default function LogScreenHeader({ className }: HeaderProps) {
           {/* Get Involved */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>Get Involved</NavigationMenuTrigger>
-            <NavigationMenuContent className="lg:w-[920px] flex flex-col p-4 gap-2">
+            <NavigationMenuContent className="flex flex-col gap-2 p-4 lg:w-[920px]">
               <NavigationMenuLink asChild>
                 <Link href="/get-involved/sponsor">Sponsor a Child</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/get-involved/donate">Donate Now</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/get-involved/volunteer">Volunteer With Us</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/get-involved/partners">Partner With Us</Link>
               </NavigationMenuLink>
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -94,34 +85,9 @@ export default function LogScreenHeader({ className }: HeaderProps) {
           {/* Success Stories */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>Success Stories</NavigationMenuTrigger>
-            <NavigationMenuContent className="lg:w-[920px] flex flex-col p-4 gap-2">
+            <NavigationMenuContent className="flex flex-col gap-2 p-4 lg:w-[920px]">
               <NavigationMenuLink asChild>
                 <Link href="/stories/videos">Video Testimonials</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/stories/reviews">Written Reviews</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/stories/ratings">Star Ratings & Filters</Link>
-              </NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          {/* Resources */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-            <NavigationMenuContent className="lg:w-[920px] flex flex-col p-4 gap-2">
-              <NavigationMenuLink asChild>
-                <Link href="/resources/blog">Awareness Blog</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/resources/downloads">Downloadable PDFs</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/resources/videos">Video Library</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link href="/resources/podcast">Podcast & Interviews</Link>
               </NavigationMenuLink>
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -129,10 +95,7 @@ export default function LogScreenHeader({ className }: HeaderProps) {
           {/* About Us */}
           <NavigationMenuItem>
             <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
-            <NavigationMenuContent className="lg:w-[920px] flex flex-col p-4 gap-2">
-              <NavigationMenuLink asChild>
-                <Link href="/about/team">Meet Our Team</Link>
-              </NavigationMenuLink>
+            <NavigationMenuContent className="flex flex-col gap-2 p-4 lg:w-[920px]">
               <NavigationMenuLink asChild>
                 <Link href="/about/mission">Our Mission</Link>
               </NavigationMenuLink>

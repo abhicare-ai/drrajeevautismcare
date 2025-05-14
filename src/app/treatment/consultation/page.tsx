@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import ausi from "@/assets/pexels-olly-3761513.jpg";
 import VavBorder from "@/components/VavBorder";
@@ -11,8 +12,11 @@ import convenienceIcon from "@/assets/convenience.svg";
 import costEffectiveIcon from "@/assets/costEffective.svg";
 import certifiedIcon from "@/assets/certified.svg";
 import shieldIcon from "@/assets/confidential.svg";
+import BookAppoinmet from "@/app/BookAppoinmet";
+import { useState } from "react";
 
 export default function Page() {
+  const [show, setShow] = useState(false);
   return (
     <main>
       <div className="mx-auto max-w-7xl px-3">
@@ -93,7 +97,9 @@ export default function Page() {
               </div>
             </div>
 
-            <Button className="w-full">Consult Now</Button>
+            <Button className="w-full" onClick={() => setShow(true)}>
+              Consult Now
+            </Button>
 
             <div className="mt-10 flex flex-col justify-between gap-5 md:flex-row">
               {/* Count Section */}
@@ -185,6 +191,8 @@ export default function Page() {
           </div>
         </div>
       </div>
+
+      <BookAppoinmet open={show} onclose={() => setShow(false)} />
     </main>
   );
 }

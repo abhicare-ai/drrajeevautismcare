@@ -5,7 +5,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="text-card bg-secondary-foreground border-t border-b py-10 text-sm">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 md:grid-cols-3 ">
         {/* Contact Info */}
         <div className="space-y-5">
           <div className="space-y-3">
@@ -67,44 +67,11 @@ export default function Footer() {
             <li>
               <Link href="/get-involved/sponsor">Sponsor a Child</Link>
             </li>
-            <li>
-              <Link href="/get-involved/donate">Donate</Link>
-            </li>
-            <li>
-              <Link href="/get-involved/volunteer">Volunteer</Link>
-            </li>
-            <li>
-              <Link href="/get-involved/partners">Partner with Us</Link>
-            </li>
+           
           </ul>
         </div>
 
-        {/* Newsletter (Optional) */}
-        <div>
-          <h4 className="mb-2 text-lg font-semibold">
-            Subscribe to Our Newsletter
-          </h4>
-          <form className="flex flex-col gap-2">
-            <input
-              type="text"
-              placeholder="Name"
-              className="rounded border px-2 py-1"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="rounded border px-2 py-1"
-              required
-            />
-            <button
-              type="submit"
-              className="rounded bg-green-700 px-3 py-1 text-white"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+    
       </div>
 
       {/* Bottom bar */}

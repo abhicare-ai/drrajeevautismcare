@@ -14,9 +14,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  name  String
-  email String @unique
+model FeedBack {
+  id      String  @id @default(cuid())
+  name    String
+  comment String
+  vidio   String?
 
-  @@map("sers")
+  createdAt DateTime @default(now())
+
+  @@map("feedbacks")
+}
+
+model Sponsor {
+  id          String @id @default(cuid())
+  name        String
+  phoneNumber String
+  Country     String
+  state       String
+  amount      Int
+
+  orderId           String  @unique
+  razorpayPaymentId String?
+  razorpaySignature String?
+
+  createdAt DateTime @default(now())
+}
+
+model Appt {
+  id          String @id @default(cuid())
+  name        String
+  phoneNumber String
+  Country     String
+  state       String
+
+  createdAt DateTime @default(now())
 }
