@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     template: "%s - Dr.Rajeev Autism Care",
-    default: "Dr. Rajeev Lifecare Trust",
+    default: "Dr.Rajeev Autism Care",
   },
   description:
     "Special care and support for children with autism by Dr. Rajeev. We offer early intervention, personalized therapy, and continuous guidance for parents.",
