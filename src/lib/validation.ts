@@ -14,11 +14,10 @@ export const sponsorSchema = z.object({
   phoneNumber: requiredString,
   Country: requiredString,
   state: requiredString,
-  amount: z.number().min(5000, "Amount must be at least ₹500 or more"),
+  amount:  z.coerce.number().min(2000, "Amount must be at least ₹2000 or more"),
 });
 
 export type SponsorValues = z.infer<typeof sponsorSchema>;
-
 
 export const appoinmetSchema = z.object({
   name: requiredString,

@@ -14,13 +14,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import { appoinmetSchema, AppoinmetValues } from "@/lib/validation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { appo } from "./actions";
 import { useTransition } from "react";
+import LoadingButton from "@/components/LodingButton";
+import { toast } from "sonner";
 
 export default function BookAppoinmet({ open, onclose }: any) {
   const form = useForm<AppoinmetValues>({
@@ -32,22 +33,31 @@ export default function BookAppoinmet({ open, onclose }: any) {
       state: "",
     },
   });
-  const [trasn, setra] = useTransition();
   function handlerOpenChange() {
     onclose();
   }
+  const [ispending, startTransation] = useTransition();
 
-  async function onSubmit(value: AppoinmetValues) {
-    setra(async () => {
-      const  data  = await appo(value);
+ async function onSubmit(value: AppoinmetValues) {
+  startTransation(async () => {
+    try {
+      const data = await appo(value);
 
       if (data) {
-        alert("Your Data Send to Counslor Please wait for call");
+        toast.success("Your data was sent to the counselor. Please wait for a call!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
       }
-      form.reset()
-      onclose()
-    });
-  }
+
+      form.reset();
+      onclose();
+    } catch (error) {
+      console.error("Server Error:", error);
+      toast.error("Internal server error. Please try again.");
+    }
+  });
+}
+
   return (
     <Dialog open={open} onOpenChange={handlerOpenChange}>
       <DialogContent>
@@ -117,9 +127,9 @@ export default function BookAppoinmet({ open, onclose }: any) {
               )}
             />
 
-            <Button className="w-full" disabled={trasn}>
+            <LoadingButton loading={ispending} type="submit" className="w-full">
               Submit
-            </Button>
+            </LoadingButton>
           </form>
         </Form>
       </DialogContent>

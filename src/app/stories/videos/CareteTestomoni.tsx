@@ -25,6 +25,8 @@ import axios from "axios";
 import { UploadButton } from "@/lib/uploadthing";
 import { useState } from "react";
 import { Plus } from "lucide-react";
+import LoadingButton from "@/components/LodingButton";
+import { toast } from "sonner";
 
 export default function CareteTestomoni() {
   const form = useForm<TestomonialValues>({
@@ -37,12 +39,29 @@ export default function CareteTestomoni() {
   });
 
   const [usr, setu] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = async (value: TestomonialValues) => {
-    axios.post("/api/feedback", {
-      comment: value.comment,
-      name: value.name,
-      vidio: usr,
-    });
+    try {
+      setIsLoading(true); // start loading
+
+      const response = await axios.post("/api/feedback", {
+        comment: value.comment,
+        name: value.name,
+        vidio: usr,
+      });
+
+      if (response.status === 200) {
+        toast.success("✅ Feedback submitted successfully!");
+      } else {
+        toast.error("❌ Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Feedback error:", error);
+      toast.error("❌ Failed to submit feedback.");
+    } finally {
+      setIsLoading(false); // end loading
+    }
   };
 
   return (
@@ -109,7 +128,9 @@ export default function CareteTestomoni() {
               )}
             />
 
-            <Button className="w-full">Submit</Button>
+            <LoadingButton className="w-full" loading={isLoading}>
+              Submit
+            </LoadingButton>
           </form>
         </Form>
       </DialogContent>

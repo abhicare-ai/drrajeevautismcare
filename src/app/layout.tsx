@@ -5,6 +5,7 @@ import LogScreenHeader from "./LogScreenHeader";
 import TopBar from "./TopBar";
 import PhoneHeader from "./PhoneHeader";
 import Footer from "./Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
          {children}
         <Footer/>
      </div>
+       <Toaster />
       </body>
     </html>
   );

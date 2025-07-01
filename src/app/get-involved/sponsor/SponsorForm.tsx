@@ -24,6 +24,9 @@ import { Input } from "@/components/ui/input";
 
 import axios from "axios";
 import Script from "next/script";
+import { useState } from "react";
+import LoadingButton from "@/components/LodingButton";
+import { toast } from "sonner";
 
 export default function SponsorForm({ sponName }: any) {
   const form = useForm<SponsorValues>({
@@ -33,51 +36,79 @@ export default function SponsorForm({ sponName }: any) {
       phoneNumber: "",
       Country: "",
       state: "",
-      amount: 5500,
+      amount: 2000,
     },
   });
 
+  const [loading, seloading] = useState(false);
+
+
+
   const onSubmit = async (value: SponsorValues) => {
-    const { data } = await axios.post("/api/sponsor", {
-      name: value.name,
-      phoneNumber: value.phoneNumber,
-      Country: value.Country,
-      state: value.state,
-      amount: value.amount * 100,
-    });
+    try {
+      seloading(true); // start loading
 
-    if (data.orderId) {
-      const paymentData = {
-        key: process.env.NEXT_PUBLIC_RAZOR_KEY,
-        order_id: data.orderId,
+      const { data } = await axios.post("/api/sponsor", {
+        name: value.name,
+        phoneNumber: value.phoneNumber,
+        Country: value.Country,
+        state: value.state,
+        amount: value.amount * 100,
+      });
 
-        name: "Dr.Rajeev's Autism Care",
-        description: "Sponsorship Payment",
-        image: "https://www.rajeevclinic.com/assets/images/web_logo_2.png",
+      if (data.orderId) {
+        const paymentData = {
+          key: process.env.NEXT_PUBLIC_RAZOR_KEY,
+          order_id: data.orderId,
 
-        handler: async function (response: any) {
-          // verify payment
-          const res = await fetch("/api/verifySponsorOrder", {
-            method: "POST",
-            body: JSON.stringify({
-              orderId: response.razorpay_order_id,
-              razorpayPaymentId: response.razorpay_payment_id,
-              razorpaySignature: response.razorpay_signature,
-            }),
-          });
-          const data = await res.json();
+          name: "Dr.Rajeev's Autism Care",
+          description: "Sponsorship Payment",
+          image: "https://www.rajeevclinic.com/assets/images/web_logo_2.png",
 
-          if (data.isOk) {
-            // do whatever page transition you want here as payment was successful
-            alert("Payment successful");
-          } else {
-            alert("Payment failed");
-          }
-        },
-      };
+          handler: async function (response: any) {
+            try {
+              const res = await fetch("/api/verifySponsorOrder", {
+                method: "POST",
+                body: JSON.stringify({
+                  orderId: response.razorpay_order_id,
+                  razorpayPaymentId: response.razorpay_payment_id,
+                  razorpaySignature: response.razorpay_signature,
+                }),
+              });
 
-      const payment = new (window as any).Razorpay(paymentData);
-      payment.open();
+              const result = await res.json();
+
+              if (result.isOk) {
+                toast.success("🎉 Payment successful!");
+              } else {
+                toast.error("❌ Payment verification failed.");
+              }
+            } catch (err) {
+              console.error("Verification Error:", err);
+              toast.error(
+                "❌ Error verifying payment. Please contact support.",
+              );
+            }
+          },
+          prefill: {
+            name: value.name,
+            contact: value.phoneNumber,
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+
+        const payment = new (window as any).Razorpay(paymentData);
+        payment.open();
+      } else {
+        toast.error("Failed to initiate payment. Please try again.");
+      }
+    } catch (error) {
+      console.error("Sponsor Submit Error:", error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      seloading(false); // stop loading regardless of outcome
     }
   };
 
@@ -180,7 +211,9 @@ export default function SponsorForm({ sponName }: any) {
                 )}
               />
 
-              <Button className="w-full">Submit</Button>
+              <LoadingButton className="w-full" loading={loading}>
+                Submit
+              </LoadingButton>
             </form>
           </Form>
         </DialogContent>

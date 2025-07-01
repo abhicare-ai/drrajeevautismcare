@@ -86,7 +86,7 @@ export default function TesomonialSlider() {
         <SwiperSlide className="bg-primary text-card overflow-hidden rounded-md p-4">
           <iframe
             className="mb-4 h-[300px] w-full"
-            src="https://www.youtube.com/embed/uJV_SWpW9gY?si=mr5mYBP5pGdG4C8G"
+            src="https://www.youtube.com/embed/12QzPxMRB6g?si=xl_P9IXaINpln1Og"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
